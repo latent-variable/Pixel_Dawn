@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{CS179N-Project Report}
+\author{Christopher Yee\\ Rafael Gomez \\Lino Valdovinos  \\Kevin Lynn \\Jennifer Shin }
+\date{June 1, 2018}
+\usepackage{natbib}
+\usepackage{graphicx}
+ 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+ 
+\begin{document}
+
+\maketitle
+\section{What we need to do!}
+
+A write up of the project.  The write up must include all of the following:
+\begin{enumerate}
+\item 2-c-i. For each asset you have, say whether you made it yourself or not.  If you did not make it yourself, (1) provide a link showing where you got the asset, (2) state what the license for that asset is (eg, CC-by-sa-3.0), and (3) provide a link that I can follow to verify the license.  This applies for characters, models, sounds, or any other type of asset that you are using.
+
+\item 2-c-ii. The write up must state which objectives you accomplished, which objectives you dropped (too hard, not enough time), what objectives you were unable to complete.  If something is implemented but not quite working, tell me about it.
+
+\item 2-c-iii. If you were unable to complete something or something is not working as intended, tell me why.  What went wrong?  Could something have been done differently to avoid this?  You can get full points for the project even if some functionality is not working, provided you have a good analysis of why this was the case.  These projects are tough; I expect that some things will not be completed.
+
+\item 2-c-iv. The write up must be in LaTeX, and it must be included in the git repository.  The write up should also be submitted as a pdf separately from the git repository.
+
+\end{enumerate}
+
+
+\section{Introduction}
+
+\section{Assets}
+\begin{itemize}
+\item Every character, map, and human zombies assets are from the  \href{https://www.gameart2d.com/freebies.html}{Game Art 2D }. These assets fall under the \href{https://www.gameart2d.com/license.html}{CC0 1.0 Universal }License.
+
+\item The Guns used in this game can be found at \href{https://opengameart.org/content/gun-construction-kit}{OpenGameArt.org}. Every assets from this page falls under the \href{https://creativecommons.org/publicdomain/zero/1.0/}{CC0 1.0 Universal }License.
+
+\item Background music in sci-fy map. \href{https://opengameart.org/}{OpenGameArt.org} with \href{https://creativecommons.org/licenses/by/3.0/}{CC BY 3.0} license.  
+
+\item Zombie wolf assets can be found here \href{https://ansimuz.itch.io/hell-hound-sprite-animation}{itch.io} with the  \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution v4.0 International } Licenses. 
+
+\item 8-bit sounds. \href{https://opengameart.org/content/512-sound-effects-8-bit-style}{OpenGameArt.org}.
+
+\item fonts: \href{http://www.04.jp.org/}{04}  
+
+\item main menu music: \href{https://incompetech.com/music/}{Incompetech Music} with the \href{https://creativecommons.org/licenses/by/3.0/}{CC BY 3.0} license.
+
+\end{itemize}
+
+\section{Objectives Accomplished}
+\begin{itemize}
+\item Four Playable Characters.  They each behave and handle differently. They all have a different ways to move around that map and all have a special ability. 
+
+\item Android Character is able to hover for a short time and has a arm cannon. 
+
+\item Little girl is fast and nimble and its able to summons guns around her for a short time. 
+
+\item Ninja has the ability to double jump and jump of walls. She is able to use her sword. 
+
+\item Cow-boy moves has unlimited stamina and is able to use grenades. 
+
+\item All character have animations for idle, ruining, jumping, and dying, as well as character specific animations for there special moves. 
+
+\item All character have a stamina system. If the stamina runs out, that player is unable to move, buts still capable of shooting, until the stamina regenerates.
+
+\item A Sci-fi style level with all appropriate colliders and and enemy spawned point.
+
+\item A Winter style level with all appropriate colliders and and enemy spawned point.
+
+\item Character arm rotate to follow the mouse.
+
+\item All characters are able to use guns. 
+
+\item Enemy zombies, follow player character and are able to attack and deal damage player. 
+
+\item Camera tracks player through the map but its also bounded preventing it to go out side of the map. 
+
+\item Head up display shows that player score, health, current wave, stamina and payer's inventory. 
+
+\item Pause menu allows the player to pause the game, resume it, restart, return to the main menu or quit. 
+
+\item Dead menu allows the player, once's killed to restart, go back to the main menu, or quit. 
+
+\item In game sounds, for gun shots, player damage, enemy attacks, enemy kill, player kills, and more. 
+
+\item Zombie wave functionality where after every wave the number of zombies increases making the game a bit more difficult.
+
+
+
+\end{itemize}
+
+\section{Objectives Dropped, Not Completed, Or Not Working As Intended}
+\begin{itemize}
+\item Zombie bear and bird was dropped because we did not have assets for it and the time required to implement. 
+
+\item Solider playable character got drop because we did not have assets that fit the games style.  We replaced him the the cowboy character. 
+
+\item Little girls dog, originally the little girl was supposed to have a dog companion. We decided not to do that when we realized that it would become to difficult to implement with the current level designs. 
+
+\item Cowboy throw grenade animation plays backwards when the character is facing left.
+
+\item Android cannon shot will flip around the player if the player flips. 
+
+\item Mansion level was not finished in time to be used.
+
+\item Only the character's basic unique abilities were implemented.
+
+
+\end{itemize}
+\end{document}

@@ -1,0 +1,211 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player_movement : MonoBehaviour
+{
+    Camera cam;
+    public Interactable focus;
+    //public LayerMask movementMask;
+
+    Rigidbody2D rb;
+    public int playerSpeed = 10;
+
+    public float jumpForce = 200;
+    public bool candoublejump = false;
+    public bool canwalljump = false;
+    public bool canRun = false;
+    private bool doublejump = false;
+    private bool walljump = true;
+    public string child;
+    public bool canHover;
+    public float hoverTime = 2;
+    private float moveX;
+    private bool jumping;
+    public  bool onfloor = true;
+    private float time_hovering = 0;
+    public bool facingRight = true;
+
+    private float Hoversound = .1f;
+    private float curHoverSound = 0.0f;
+
+
+    //use to only turn character sprite
+    Transform playerGraphics;
+    // Use this for initialization
+    void Start()
+    {
+        // armR = Arm.GetComponent<ArmRotation>();
+        rb = GetComponent<Rigidbody2D>();
+        playerGraphics = transform.Find(child);
+        if (playerGraphics == null)
+        {
+            Debug.LogError("No Graphics as child of player !");
+        }
+        time_hovering = Time.time + hoverTime;
+<<<<<<< HEAD
+
+        cam = Camera.main;
+=======
+        curHoverSound = Time.time + Hoversound;
+>>>>>>> 66982993fc1d4da1ef845d1d54c67ef2a25936af
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+      if(!GameMaster.isdead()){
+            //CONTROLS
+            moveX = Input.GetAxis("Horizontal");
+            FlipPlayer();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (onfloor == true)
+                {
+                    Jump();
+                }
+                else if (candoublejump == true && doublejump == true)
+                {
+                    jump2();
+
+                }
+            }
+            if (Input.GetKey(KeyCode.Space) && canHover && Time.time < time_hovering)
+            {
+                hover();
+            }
+
+        }
+        if (Input.GetKey(KeyCode.Space) && canHover && Time.time < time_hovering)
+        {
+
+            Debug.Log("Hovering ");
+            hover();
+        }
+        if(Input.GetKey(KeyCode.LeftShift) && canRun)
+        {
+            run();
+        }
+
+        //PHYSICS
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+        //ITEM INTERACTION
+        if (Input.GetKeyDown("x"))
+        {
+            RemoveFocus();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Interactable interactable = other.GetComponent<Interactable>();
+        if (interactable != null)
+        {
+            SetFocus(interactable);
+        }
+    }
+
+    void SetFocus(Interactable newFocus)
+    {
+        if(newFocus != focus)
+        {
+            if(focus != null)
+            {
+                focus.OnDefocused();
+            }
+            focus = newFocus;
+        }
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if(focus != null)
+            {
+                focus.OnDefocused();
+            }
+        focus = null;
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "floor")
+        {
+            onfloor = true;
+            jumping = false;
+            walljump = true;
+            time_hovering = Time.time + hoverTime;
+        }
+        if (collision.gameObject.tag == "wall")
+        {
+            if (walljump == true)
+            {
+                doublejump = true;
+                walljump = false;
+            }
+        }
+    }
+
+    void hover()
+    {
+        if(Time.time > curHoverSound){
+            curHoverSound = Time.time + Hoversound;
+            AudioManager.PlaySound("hover");
+        }
+
+        jumping = true;
+        onfloor = false;
+        rb.AddForce(new Vector2(rb.velocity.x, 20));
+
+    }
+    void run()
+    {
+        float runSpeed = 20f;
+        rb.AddForce(new Vector2(rb.velocity.x * runSpeed, rb.velocity.y));
+    }
+    void jump2()
+    {
+        AudioManager.PlaySound("jump");
+        Vector2 v = rb.velocity;
+        v.y = 0;
+        rb.velocity = v;
+        Jump();
+        doublejump = false;
+    }
+
+    void Jump()
+    {
+        AudioManager.PlaySound("jump");
+        jumping = true;
+        onfloor = false;
+        rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+        doublejump = true;
+    }
+
+    void FlipPlayer()
+    {
+        //flip camera based of mouse dirrection to the character
+        Vector3 theScale = playerGraphics.localScale;
+        Vector3 pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+        float WorldXPos = Camera.main.ScreenToWorldPoint(pos).x; //Converts screen point to point in world
+
+        if (WorldXPos > gameObject.transform.position.x)
+        {
+            theScale.x = 1;
+            playerGraphics.localScale = theScale;
+            facingRight = true;
+        }
+        else
+        {
+
+            facingRight = false;
+            theScale.x = -1;
+            playerGraphics.localScale = theScale;
+        }
+    }
+
+
+}

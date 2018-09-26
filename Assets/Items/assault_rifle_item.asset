@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf7116e426bb0b4e848ed6155ab1d94, type: 3}
+  m_Name: assault_rifle_item
+  m_EditorClassIdentifier: 
+  name: assault_rifle
+  icon: {fileID: 21300000, guid: 7e41baf4cfa3d4feda1df27112a91c26, type: 3}
+  isDefaultItem: 0
+  item: {fileID: 1701460076828818, guid: ebdec0febf2f91e4a90f3080c6a63b15, type: 2}

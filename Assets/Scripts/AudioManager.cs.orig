@@ -1,0 +1,70 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AudioManager : MonoBehaviour {
+<<<<<<< HEAD
+    public static AudioClip assault_rifle_S, shotGun_S, pistol_S, jump_S;
+=======
+    public static AudioClip shotGun_S, pistol_S, jump_S, death_S,hover_S, zombie_A_S, zombie_G_S, zombie_D_S;
+>>>>>>> 66982993fc1d4da1ef845d1d54c67ef2a25936af
+    static AudioSource audioSrc;
+
+	// Use this for initialization
+	void Start () {
+        assault_rifle_S = Resources.Load<AudioClip>("sfx_wpn_machinegun_loop10");
+        shotGun_S = Resources.Load<AudioClip>("sfx_weapon_shotgun4");
+        pistol_S = Resources.Load<AudioClip>("sfx_weapon_singleshot23");
+        jump_S = Resources.Load<AudioClip>("sfx_movement_jump21");
+        hover_S = Resources.Load<AudioClip>("sfx_movement_jump19_landing");
+        death_S = Resources.Load<AudioClip>("bad_event");
+        zombie_A_S = Resources.Load<AudioClip>("sfx_deathscream_human12");
+        zombie_G_S = Resources.Load<AudioClip>("sfx_deathscream_alien1");
+        zombie_D_S = Resources.Load<AudioClip>("sfx_coin_double3");
+
+
+        audioSrc = GetComponent<AudioSource>();
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+    public static void PlaySound(string clip)
+    {
+        switch(clip)
+        {
+            case "assault_rifle":
+                audioSrc.PlayOneShot(assault_rifle_S);
+                break;
+            case "shotgun":
+                audioSrc.PlayOneShot(shotGun_S);
+                break;
+            case "pistol":
+                audioSrc.PlayOneShot(pistol_S);
+                break;
+            case "jump":
+                audioSrc.PlayOneShot(jump_S);
+                break;
+            case "hover":
+                audioSrc.PlayOneShot(hover_S);
+                break;
+            case "dead":
+                audioSrc.PlayOneShot(death_S);
+                break;
+            case "zombie_attack":
+                audioSrc.PlayOneShot(zombie_A_S);
+                break;
+            case "zombie_grunt":
+                audioSrc.PlayOneShot(zombie_G_S);
+                break;
+            case "zombie_dead":
+                audioSrc.PlayOneShot(zombie_D_S);
+                break;
+
+
+
+        }
+    }
+}
